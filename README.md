@@ -1,6 +1,6 @@
 # Arduino Uno Stream Deck
 
-An arduino uno based stream deck clone with python and c++
+An arduino uno based minimalistic stream deck clone with python and c++
 
 ![Kuvaus](Show/20250824_135641.jpg)
 
@@ -49,5 +49,7 @@ ArduDeck software glitching:
 
  # ArduDeck Software: ⚡ Cyberdeck ⚡
 
-
+![Kuvaus](Show/Näyttökuva (29).png)
+![Kuvaus](Show/Näyttökuva (30).png)
+![Kuvaus](Show/Näyttökuva (32).png)
 
