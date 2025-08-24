@@ -1,5 +1,5 @@
 # Arduino Uno Stream Deck
-# [Download](https://github.com/KIILUKKI/Arduino-Stream-Deck/)
+# [Download](https://github.com/KIILUKKI/Arduino-Stream-Deck/archive)
 
 
 
