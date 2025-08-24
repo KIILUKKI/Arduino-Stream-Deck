@@ -1,11 +1,11 @@
-# mainwindow.py
 import json
 from PyQt5 import QtWidgets, QtCore
 from serial.tools import list_ports
-from keyedit import KeyLineEdit
+
 from config import SETTINGS_FILE, BAUDRATE, POT_MODES
 from widgets import DeckCard, RoundGauge
 from worker import SerialWorker
+from comboselector import ComboSelector
 
 class MainWindow(QtWidgets.QMainWindow):
     startWorkerReq = QtCore.pyqtSignal(str, int, list)
@@ -35,7 +35,7 @@ class MainWindow(QtWidgets.QMainWindow):
         root.setContentsMargins(30, 30, 30, 30)
         root.setSpacing(25)
 
-        # Top bar
+        # Top bar: port selector + connect/update buttons
         topbar = QtWidgets.QHBoxLayout()
         topbar.setSpacing(15)
 
@@ -59,11 +59,10 @@ class MainWindow(QtWidgets.QMainWindow):
         topbar.addWidget(self.reconnectBtn)
         root.addLayout(topbar)
 
-        # Middle layout
+        # Middle area: deck cards + gauge
         mid = QtWidgets.QHBoxLayout()
         mid.setSpacing(30)
 
-        # Cards grid
         gridWrap = QtWidgets.QWidget()
         grid = QtWidgets.QGridLayout(gridWrap)
         grid.setHorizontalSpacing(28)
@@ -74,20 +73,22 @@ class MainWindow(QtWidgets.QMainWindow):
 
         for i in range(self.num_buttons):
             card = DeckCard(i, f"BTN {i+1}")
-            edit = KeyLineEdit()
-            edit.setPlaceholderText("Type key combo: e.g. Ctrl+S")
-            card.layout().addWidget(edit)
-            card.attachKeyEdit(edit)
-            edit.textChanged.connect(self._save_settings)
+            selector = ComboSelector()
+            card.layout().addWidget(selector)
+            card.keySelector = selector
+
+            # tallennus päivittyy valikkojen muutoksesta
+            selector.modBox.currentIndexChanged.connect(self._save_settings)
+            selector.keyBox.currentIndexChanged.connect(self._save_settings)
 
             self.cards.append(card)
-            self.keyEdits.append(edit)
+            self.keyEdits.append(selector)
+
             r, c = divmod(i, 3)
             grid.addWidget(card, r, c)
 
         mid.addWidget(gridWrap, 1)
 
-        # Gauge + telemetry
         gaugeCol = QtWidgets.QVBoxLayout()
         self.gauge = RoundGauge()
         self.telemetryLabel = QtWidgets.QLabel("—")
@@ -117,7 +118,7 @@ class MainWindow(QtWidgets.QMainWindow):
             self.portCombo.setEnabled(False)
             self.refreshBtn.setEnabled(False)
 
-            keys = [e.text().strip() for e in self.keyEdits]
+            keys = [sel.text().strip() for sel in self.keyEdits]
             self.startWorkerReq.emit(port, BAUDRATE, keys)
             self.setStatus(f"Connected to {port}")
         else:
@@ -135,7 +136,7 @@ class MainWindow(QtWidgets.QMainWindow):
             return
         self.setStatus("Updating button settings...")
         port = self.portCombo.currentText()
-        keys = [e.text().strip() for e in self.keyEdits]
+        keys = [sel.text().strip() for sel in self.keyEdits]
         self.worker.stop()
         self.startWorkerReq.emit(port, BAUDRATE, keys)
         self.setStatus("Button settings updated ✅")
@@ -177,7 +178,7 @@ class MainWindow(QtWidgets.QMainWindow):
     def _save_settings(self):
         data = {
             "port": self.portCombo.currentText(),
-            "keys": [e.text().strip() for e in self.keyEdits],
+            "keys": [sel.text() for sel in self.keyEdits],
         }
         try:
             SETTINGS_FILE.write_text(json.dumps(data, indent=2), encoding="utf-8")
@@ -205,11 +206,9 @@ class MainWindow(QtWidgets.QMainWindow):
         event.accept()
 
     def _apply_neon_theme(self):
-        """Cyberpunk neon theme with solid dark background."""
+        """Cyberpunk neon theme ja tummat dropdownit."""
         self.setStyleSheet("""
-            QMainWindow { 
-                background-color: #0b0c10; /* solid dark background */
-            }
+            QMainWindow { background-color: #0b0c10; }
             QWidget { 
                 color: #f0f0f0; 
                 font-family: 'Orbitron', 'Segoe UI', Roboto; 
@@ -222,10 +221,10 @@ class MainWindow(QtWidgets.QMainWindow):
                 box-shadow: 0 0 20px rgba(0, 255, 245, 0.6);
             }
             QComboBox, QLineEdit {
-                background: #14161c; 
+                background: #0d0d0d; 
                 border: 1px solid #00fff5;
-                border-radius: 14px;
-                padding: 10px 16px;
+                border-radius: 14px; 
+                padding: 10px 16px; 
                 color: #00fff5;
                 selection-background-color: #00fff5;
             }
@@ -246,17 +245,11 @@ class MainWindow(QtWidgets.QMainWindow):
                 color: #ff00ff; 
                 border: 1px solid #ff00ff; 
             }
-            QPushButton:pressed { 
-                background-color: #0f1015; 
-            }
+            QPushButton:pressed { background-color: #0f1015; }
             QStatusBar { background: #0b0c10; color: #00fff5; font-size: 11pt; }
             QLabel#telemetryLabel { 
-                color: #ff00ff; 
-                font-size: 16pt; 
-                font-weight: 700; 
-                padding: 10px 20px; 
-                border-radius: 16px; 
-                background-color: #1c1f2b;
-                border: 2px solid #ff00ff; 
+                color: #ff00ff; font-size: 16pt; font-weight: 700; 
+                padding: 10px 20px; border-radius: 16px; 
+                background-color: #1c1f2b; border: 2px solid #ff00ff; 
             }
         """)
