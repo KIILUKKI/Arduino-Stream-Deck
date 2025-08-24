@@ -28,6 +28,9 @@ Volume control is handled in real‑time via the potentiometer.
 
 Special handling for Fn‑style shortcuts (mapped to media controls for Windows).
 
+![Kuvaus](Show/20250824_135649.jpg)
+
+
    # Why Build It:
 Affordable, open‑source alternative to a Stream Deck.
 
