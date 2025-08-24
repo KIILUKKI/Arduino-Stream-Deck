@@ -18,8 +18,6 @@ class MainWindow(QtWidgets.QMainWindow):
 
         self.setWindowTitle("⚡ CyberDeck — Black Neon Edition")
         self.setMinimumSize(1280, 800)
-        self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
-        self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
 
         self._make_ui()
         self._apply_neon_theme()
@@ -207,17 +205,15 @@ class MainWindow(QtWidgets.QMainWindow):
         event.accept()
 
     def _apply_neon_theme(self):
-        """Cyberpunk neon theme with frosted glass background."""
+        """Cyberpunk neon theme with solid dark background."""
         self.setStyleSheet("""
             QMainWindow { 
-                background-color: rgba(11, 12, 16, 200); /* semi-transparent dark */
-                backdrop-filter: blur(15px); /* glass blur effect */
+                background-color: #0b0c10; /* solid dark background */
             }
             QWidget { 
                 color: #f0f0f0; 
                 font-family: 'Orbitron', 'Segoe UI', Roboto; 
                 font-size: 12pt; 
-                background-color: rgba(0,0,0,0); /* transparent for glass effect */
             }
             #deckCard { 
                 background: qlineargradient(x1:0,y1:0,x2:1,y2:1, stop:0 #1c1f2b, stop:1 #0b0c10);
@@ -226,7 +222,7 @@ class MainWindow(QtWidgets.QMainWindow):
                 box-shadow: 0 0 20px rgba(0, 255, 245, 0.6);
             }
             QComboBox, QLineEdit {
-                background: rgba(20, 20, 25, 180);
+                background: #14161c; 
                 border: 1px solid #00fff5;
                 border-radius: 14px;
                 padding: 10px 16px;
@@ -238,7 +234,7 @@ class MainWindow(QtWidgets.QMainWindow):
                 box-shadow: 0 0 12px #ff00ff; 
             }
             QPushButton { 
-                background-color: rgba(18, 20, 26, 220); 
+                background-color: #181a22; 
                 border: 1px solid #00fff5; 
                 border-radius: 14px; 
                 padding: 12px 20px; 
@@ -246,21 +242,21 @@ class MainWindow(QtWidgets.QMainWindow):
                 font-weight: bold; 
             }
             QPushButton:hover { 
-                background-color: rgba(30, 31, 41, 220); 
+                background-color: #232533; 
                 color: #ff00ff; 
                 border: 1px solid #ff00ff; 
             }
             QPushButton:pressed { 
-                background-color: rgba(13, 13, 18, 220); 
+                background-color: #0f1015; 
             }
-            QStatusBar { background: rgba(11, 12, 16, 200); color: #00fff5; font-size: 11pt; }
+            QStatusBar { background: #0b0c10; color: #00fff5; font-size: 11pt; }
             QLabel#telemetryLabel { 
                 color: #ff00ff; 
                 font-size: 16pt; 
                 font-weight: 700; 
                 padding: 10px 20px; 
                 border-radius: 16px; 
-                background-color: rgba(20, 20, 25, 180);
+                background-color: #1c1f2b;
                 border: 2px solid #ff00ff; 
             }
         """)
