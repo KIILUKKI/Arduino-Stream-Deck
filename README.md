@@ -47,3 +47,7 @@ ArduDeck software glitching:
 2. Then disconnect from the Arduino on ArduDeck.
 3. Reconnect to Arduino on ArduDeck.
 
+ # ArduDeck Software: ⚡ Cyberdeck ⚡
+
+
+
