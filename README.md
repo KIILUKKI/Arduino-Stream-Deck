@@ -7,7 +7,7 @@ An arduino uno based stream deck clone with python and c++
 This project is a custom-built macro controller powered by Arduino and a companion Python app. It’s designed for creators, streamers, and productivity enthusiasts who want tactile, programmable controls — without the price tag of commercial gear.
 
    # Features:
-6 programmable mechanical buttons — assign any key combo or macro for instant access.
+6 programmable mechanical buttons — assign any key combo.
 
 Single rotary potentiometer — perfect for volume control, slider adjustments, or any analog input.
 
@@ -15,16 +15,16 @@ Customizable key combos — from simple keystrokes to multi‑modifier shortcuts
 
 Dark‑themed desktop configuration app — set up buttons via dropdowns and text inputs, no code edits required.
 
-Cross‑platform HID emulation — behaves like a real keyboard for universal software compatibility.
+Cross‑platform HID emulation — behaves like a real keyboard.
 
    # How It Works:
 Arduino reads button presses and potentiometer values.
 
 Python (PyQt) desktop app sends your configured key combos to the board and handles key emulation on the host.
 
-Volume control is handled in real‑time via the potentiometer when set to "volume mode".
+Volume control is handled in real‑time via the potentiometer.
 
-Special handling for Fn‑style shortcuts (mapped to media controls for OS compatibility).
+Special handling for Fn‑style shortcuts (mapped to media controls for Windows).
 
    # Why Build It:
 Affordable, open‑source alternative to a Stream Deck.
