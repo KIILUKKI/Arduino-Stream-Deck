@@ -33,3 +33,13 @@ Affordable, open‑source alternative to a Stream Deck.
 Fully modifiable hardware and software — make it your own.
 
 No LCDs or distractions, just pure functional control.
+
+
+
+  # Doesen't work/troubleshoot
+
+ArduDeck software glitching:
+1. Unplug the Arduino from the computer and plug it back in.
+2. Then disconnect from the Arduino on ArduDeck.
+3. Reconnect to Arduino on ArduDeck.
+
