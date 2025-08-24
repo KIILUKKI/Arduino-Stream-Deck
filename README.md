@@ -3,7 +3,8 @@
 An arduino uno based stream deck clone with python and c++
 
 
- #DIY Button Macro Controller with Potentiometer:
+   # DIY Button Macro Controller with Potentiometer:
+   
 This project is a custom-built macro controller powered by Arduino and a companion Python app. It’s designed for creators, streamers, and productivity enthusiasts who want tactile, programmable controls — without the price tag of commercial gear.
 
    # Features:
