@@ -49,7 +49,7 @@ ArduDeck software glitching:
 
  # ArduDeck Software: ⚡ Cyberdeck ⚡
 
-![Kuvaus](Show/Näyttökuva (29).png)
-![Kuvaus](Show/Näyttökuva (30).png)
-![Kuvaus](Show/Näyttökuva (32).png)
+![Kuvaus](Show/Näyttökuva_(29).png)
+![Kuvaus](Show/Näyttökuva_(30).png)
+![Kuvaus](Show/Näyttökuva_(32).png)
 
