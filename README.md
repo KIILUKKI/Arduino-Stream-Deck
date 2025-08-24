@@ -2,7 +2,7 @@
 
 An arduino uno based stream deck clone with python and c++
 
-![Kuvaus](https://raw.githubusercontent.com/KIILUKKI/Arduino-Stream-Deck/main/Show/20250824_135641.jpg)
+![Kuvaus](Show/20250824_135641.jpg)
 
    # DIY Button Macro Controller with Potentiometer:
    
