@@ -177,9 +177,9 @@ class MainWindow(QtWidgets.QMainWindow):
         topbar.setSpacing(15)
         self.portCombo = QtWidgets.QComboBox()
         self.portCombo.setMinimumWidth(240)
-        self.refreshBtn = QtWidgets.QPushButton("🔄 Refresh")
-        self.connectBtn = QtWidgets.QPushButton("⚡ Connect")
-        self.reconnectBtn = QtWidgets.QPushButton("🔁 Update Keys")
+        self.refreshBtn = QtWidgets.QPushButton(" Refresh")
+        self.connectBtn = QtWidgets.QPushButton(" Connect")
+        self.reconnectBtn = QtWidgets.QPushButton(" Update Keys")
         self.connectBtn.setFixedHeight(48)
         self.reconnectBtn.setFixedHeight(48)
 
