@@ -1,4 +1,6 @@
 # Arduino Uno Stream Deck
+# [Downloads](https://github.com/KIILUKKI/Arduino-Stream-Deck/archive/refs/heads/main.zip)
+
 
 An arduino uno based minimalistic stream deck clone with python and c++
 
